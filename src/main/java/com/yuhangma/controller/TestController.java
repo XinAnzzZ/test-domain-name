@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
 
-    @GetMapping("/")
+    @GetMapping(value={"/", ""})
     public String test() {
 
         return "test";
