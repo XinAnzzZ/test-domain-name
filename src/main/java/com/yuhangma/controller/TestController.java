@@ -40,7 +40,7 @@ public class TestController {
         }
     }
 
-    @PostMapping("/test")
+    @GetMapping("/test")
     public ResultVO ok() {
         return ResultVO.success();
     }
