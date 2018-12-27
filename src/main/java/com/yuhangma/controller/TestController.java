@@ -1,7 +1,12 @@
 package com.yuhangma.controller;
 
+import com.yuhangma.entity.vo.ResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /**
  * @author XinAnzzZ
@@ -10,9 +15,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
 
-    @GetMapping(value={"/", ""})
+    @GetMapping(value = {"/", ""})
     public String test() {
-
         return "test";
+    }
+
+    @PostMapping("/blog/deploy")
+    public void blogDeploy() {
+        try {
+            String filePath = "/docker/sh/blog_deploy.sh";
+            Process ps = Runtime.getRuntime().exec(filePath);
+            ps.waitFor();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            String result = sb.toString();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("/test")
+    public ResultVO ok() {
+        return ResultVO.success();
     }
 }
