@@ -40,7 +40,7 @@ public class TestController {
         }
     }
 
-    @GetMapping("/test")
+    @GetMapping("/ok")
     public ResultVO ok() {
         return ResultVO.success();
     }
