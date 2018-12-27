@@ -23,7 +23,7 @@ public class TestController {
     @PostMapping("/blog/deploy")
     public void blogDeploy() {
         try {
-            String filePath = "/docker/sh/blog_deploy.sh";
+            String filePath = "/docker/sh/deploy_blog.sh";
             Process ps = Runtime.getRuntime().exec(filePath);
             ps.waitFor();
 
