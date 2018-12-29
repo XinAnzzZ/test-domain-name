@@ -1,0 +1,11 @@
+version: '2'
+services:
+  java_service_test_domain_name:
+    container_name: java-service-domain
+    image: maven:3.5.4-jdk-8-alpine
+    volumes:
+    - /root/.m2:/root/.m2
+    - /docker/java-service/test-domain-name:/usr/src/mymaven
+    ports:
+    - "9001:9001"
+    command: "/bin/sh /usr/src/mymaven/docker-entrypoint.sh"
