@@ -1,10 +1,13 @@
 package com.yuhangma.controller;
 
+import com.yuhangma.TestRepository;
+import com.yuhangma.entity.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Date;
@@ -45,5 +48,24 @@ public class TestController {
     @ResponseBody
     public Date ok() {
         return new Date();
+    }
+
+    @Resource
+    private TestRepository testRepository;
+
+    @GetMapping("/test/date")
+    @ResponseBody
+    public Test test01() {
+        Test test = new Test();
+        Test save = testRepository.save(test);
+        return testRepository.findById(save.getId()).orElseThrow(RuntimeException::new);
+    }
+
+    @GetMapping("/test/save/date")
+    @ResponseBody
+    public void testDate() {
+        Test test = testRepository.findById(2).orElseThrow(RuntimeException::new);
+        test.setDate(new Date());
+        testRepository.save(test);
     }
 }

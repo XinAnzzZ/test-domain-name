@@ -5,7 +5,7 @@ services:
     image: maven:3.5.4-jdk-8-alpine
     volumes:
     - /root/.m2:/root/.m2
-    - /docker/java-service/test-domain-name:/usr/src/mymaven
+    - /docker/java-service/Test-domain-name:/usr/src/mymaven
     ports:
     - "9001:9001"
     command: "/bin/sh /usr/src/mymaven/docker-entrypoint.sh"
