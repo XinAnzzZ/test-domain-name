@@ -65,6 +65,7 @@ public class TestController {
     @ResponseBody
     public void testDate() {
         Test test = testRepository.findById(2).orElseThrow(RuntimeException::new);
+        System.out.println(new Date());
         test.setDate(new Date());
         testRepository.save(test);
     }
