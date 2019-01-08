@@ -6,7 +6,8 @@ services:
     volumes:
     - /root/.m2:/root/.m2
     - /docker/java-service/test-domain-name:/usr/src/mymaven
-    - /etc/localtime:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone
+    - /etc/localtime:/etc/localtime
     ports:
     - "9001:9001"
     command: "/bin/sh /usr/src/mymaven/docker-entrypoint.sh"
