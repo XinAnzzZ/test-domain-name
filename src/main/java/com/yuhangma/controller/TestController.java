@@ -1,7 +1,7 @@
 package com.yuhangma.controller;
 
-import com.yuhangma.TestRepository;
 import com.yuhangma.entity.Test;
+import com.yuhangma.repository.TestRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

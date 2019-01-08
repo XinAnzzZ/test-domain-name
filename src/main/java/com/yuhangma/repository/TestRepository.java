@@ -1,4 +1,4 @@
-package com.yuhangma;
+package com.yuhangma.repository;
 
 import com.yuhangma.entity.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
